@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion - Gestion de Stock</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="auth-container">
+    <div class="auth-card">
+
+        <div class="auth-header">
+            <div class="auth-logo">
+                <i class="fas fa-warehouse"></i>
+            </div>
+            <h1 class="auth-title">Gestion de Stock</h1>
+            <div class="auth-subtitle">Accès au système</div>
+        </div>
+
+        <div class="auth-tabs">
+            <button class="auth-tab active" data-tab="login">Connexion</button>
+            <button class="auth-tab" data-tab="signup">Créer un compte</button>
+        </div>
+
+        <!-- LOGIN -->
+        <form class="auth-form active" id="login-form">
+            <div class="form-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="login-username" placeholder="Nom d'utilisateur" class="form-input">
+            </div>
+            <div class="form-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="login-password" placeholder="Mot de passe" class="form-input">
+                <button type="button" class="password-toggle" id="toggle-login-password">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+            <button type="button" id="loginBtn" class="auth-button">Se connecter</button>
+            <div class="error-message" id="login-error">Identifiants incorrects</div>
+        </form>
+
+        <!-- SIGNUP -->
+        <form class="auth-form" id="signup-form">
+            <div class="form-group">
+                <i class="fas fa-user-circle"></i>
+                <input type="text" id="signup-name" placeholder="Nom complet" class="form-input">
+            </div>
+            <div class="form-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="signup-username" placeholder="Nom d'utilisateur" class="form-input">
+            </div>
+            <div class="form-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="signup-password" placeholder="Mot de passe" class="form-input">
+                <button type="button" class="password-toggle" id="toggle-signup-password">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-user-tag"></i>
+                <select id="signup-role" class="form-input">
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+            <button type="button" id="signupBtn" class="auth-button">Créer compte</button>
+            <div class="error-message" id="signup-error"></div>
+        </form>
+
+        <div class="auth-footer">
+            <p>© 2024 Gestion de Stock. Tous droits réservés.</p>
+        </div>
+
+    </div>
+</div>
+
+<script src="login.js"></script>
+</body>
+</html>

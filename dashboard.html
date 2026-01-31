@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord - Gestion de Stock</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard-style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- ===== SIDEBAR ===== -->
+        <div class="sidebar">
+            <div class="logo">
+                <h1>Gestion de Stock</h1>
+                <p>Établissement Scolaire</p>
+            </div>
+
+            <nav class="menu">
+                <a href="dashboard.html" class="menu-item active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Tableau de Bord</span>
+                </a>
+                <a href="index.html" class="menu-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Commandes</span>
+                    <span class="badge">0</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-box"></i>
+                    <span>Articles</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-warehouse"></i>
+                    <span>Stock</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-users"></i>
+                    <span>Utilisateurs</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Paramètres</span>
+                </a>
+            </nav>
+
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-details">
+                    <h4 id="user-name">Utilisateur</h4>
+                    <p id="user-role">Non connecté</p>
+                </div>
+            </div>
+
+            <a href="#" class="logout-btn" id="logout-btn">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Connexion</span>
+            </a>
+        </div>
+
+        <!-- ===== MAIN CONTENT ===== -->
+        <div class="main-content">
+            <!-- Header -->
+             <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com; font-src https://cdnjs.cloudflare.com;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="نظام إدارة المخزون للمؤسسات التعليمية">
+            <div class="header">
+                <h1>
+                    <i class="fas fa-tachometer-alt"></i>
+                    Tableau de Bord
+                </h1>
+                <div class="header-actions">
+                    <button class="notification-btn" id="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">0</span>
+                    </button>
+                    <div class="current-date" id="current-date"></div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <span class="stat-trend neutral">-</span>
+                    </div>
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">Commandes en Cours</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <span class="stat-trend neutral">-</span>
+                    </div>
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">Articles en Rupture</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                        <span class="stat-trend neutral">-</span>
+                    </div>
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">Total des Articles</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <span class="stat-trend neutral">-</span>
+                    </div>
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">Stock Disponible</div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="content-grid">
+                <!-- Left Column: History -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-history"></i>
+                            Historique des Commandes
+                        </h2>
+                        <button class="view-all-btn" id="view-all-btn" disabled>
+                            Voir Toutes
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <h3>Système non configuré</h3>
+                        <p>
+                            Le système de gestion de stock n'a pas encore été configuré.<br>
+                            Veuillez configurer les paramètres de base pour commencer.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Column: Stock Status -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-chart-pie"></i>
+                            État du Stock
+                        </h2>
+                    </div>
+
+                    <div class="empty-state">
+                        <i class="fas fa-warehouse"></i>
+                        <h3>Configuration requise</h3>
+                        <p>
+                            Aucun article ou catégorie n'a été configuré.<br>
+                            Configurez d'abord les articles et catégories.
+                        </p>
+                    </div>
+
+                    <!-- Quick Actions (المحافظة على الأزرار الأخرى فقط) -->
+                    <div class="quick-actions">
+                        <div class="quick-action-btn" id="add-article-btn">
+                            <i class="fas fa-box"></i>
+                            <span>Ajouter Article</span>
+                        </div>
+                        <div class="quick-action-btn" id="add-category-btn">
+                            <i class="fas fa-folder-plus"></i>
+                            <span>Nouvelle Catégorie</span>
+                        </div>
+                        <div class="quick-action-btn" id="add-service-btn">
+                            <i class="fas fa-concierge-bell"></i>
+                            <span>Ajouter Service</span>
+                        </div>
+                        <div class="quick-action-btn" id="config-btn">
+                            <i class="fas fa-cogs"></i>
+                            <span>Configuration</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <p>© 2024 Gestion de Stock - Établissement Scolaire</p>
+                <p class="version">Système en attente de configuration • Version 1.0.0</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour Configuration -->
+    <div class="modal" id="config-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <i class="fas fa-cogs"></i>
+                    Configuration du Système
+                </h3>
+                <button class="close-btn" id="close-config-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="config-options">
+                    <div class="config-option" id="config-articles">
+                        <i class="fas fa-box"></i>
+                        <div>
+                            <h4>Configurer les Articles</h4>
+                            <p>Définir les articles et produits du stock</p>
+                        </div>
+                    </div>
+                    <div class="config-option" id="config-categories">
+                        <i class="fas fa-folder"></i>
+                        <div>
+                            <h4>Configurer les Catégories</h4>
+                            <p>Créer des catégories pour organiser le stock</p>
+                        </div>
+                    </div>
+                    <div class="config-option" id="config-services">
+                        <i class="fas fa-concierge-bell"></i>
+                        <div>
+                            <h4>Configurer les Services</h4>
+                            <p>Définir les services et départements</p>
+                        </div>
+                    </div>
+                    <div class="config-option" id="config-users">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <h4>Gérer les Utilisateurs</h4>
+                            <p>Ajouter et gérer les comptes utilisateurs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-secondary" id="cancel-config-btn">
+                    Annuler
+                </button>
+                <button class="modal-btn modal-btn-primary" id="save-config-btn">
+                    Enregistrer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay de chargement -->
+    <div id="loading-overlay">
+        <div class="loading-content">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Chargement...</p>
+        </div>
+    </div>
+
+    <script src="dashboard-script.js"></script>
+</body>
+</html>

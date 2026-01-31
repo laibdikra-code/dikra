@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Stock - Établissement Scolaire</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com; font-src https://cdnjs.cloudflare.com;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="نظام إدارة المخزون للمؤسسات التعليمية">
+        <div class="header">
+            <h1>Gestion de Stock - Établissement Scolaire</h1>
+            <h2>Mes Commandes</h2>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content-wrapper">
+            <!-- Left: Commands List (EMPTY) -->
+            <div class="commands-section">
+                <div class="section-header">
+                    <h3 class="section-title">Liste des Commandes</h3>
+                    <button class="new-order-btn" id="new-order-btn">
+                        <i class="fas fa-plus"></i> Nouvelle Commande
+                    </button>
+                </div>
+
+                <table class="commands-table">
+                    <thead>
+                        <tr>
+                            <th>N° Commande</th>
+                            <th>Date</th>
+                            <th>Service</th>
+                            <th>Statut</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="commands-body">
+                        <!-- EMPTY - No orders yet -->
+                        <tr id="no-orders">
+                            <td colspan="5" class="empty-message">
+                                <i class="fas fa-inbox"></i><br>
+                                Aucune commande pour le moment
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <div class="pagination-info" id="pagination-info">
+                        Page 0 sur 0
+                    </div>
+                    <div class="pagination-buttons">
+                        <button class="page-btn" id="prev-btn" disabled>
+                            <i class="fas fa-chevron-left"></i> Précédent
+                        </button>
+                        <button class="page-btn" id="next-btn" disabled>
+                            Suivant <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: New Order Form -->
+            <div class="new-order-section">
+                <h3 class="section-title">Effectuer une Nouvelle Commande</h3>
+
+                <div class="form-group">
+                    <label for="service-select">Service</label>
+                    <select class="dropdown" id="service-select">
+                        <option value="">Sélectionner un service</option>
+                        <!-- Will be populated dynamically -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="article-select">Article</label>
+                    <div class="form-row">
+                        <select class="dropdown" id="article-select" disabled>
+                            <option value="">Choisir un article...</option>
+                        </select>
+                        
+                        <input type="number" id="quantity" class="quantity-input" value="1" min="1" disabled>
+                        
+                        <button class="add-btn" id="add-btn" disabled>
+                            Ajouter
+                        </button>
+                    </div>
+                </div>
+
+                <h3 class="cart-title">Articles Commandés</h3>
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Article</th>
+                            <th>Quantité</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-body">
+                        <!-- EMPTY - No items in cart -->
+                        <tr id="empty-cart">
+                            <td colspan="3" class="empty-cart-message">
+                                <i class="fas fa-shopping-cart"></i><br>
+                                Aucun article ajouté pour le moment.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="validate-section">
+                    <button class="validate-btn" id="validate-btn" disabled>
+                        Valider la Commande
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Details Modal (hidden initially) -->
+    <div class="modal" id="order-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Détails de la Commande</h3>
+                <button class="close-btn" id="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Will be populated when needed -->
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-print" id="print-btn">
+                    <i class="fas fa-print"></i> Imprimer
+                </button>
+                <button class="modal-btn modal-btn-close" id="close-btn">
+                    Fermer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
